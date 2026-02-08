@@ -1,0 +1,29 @@
+# Ignore dependencies (Let Docker install them fresh)
+node_modules
+npm-debug.log
+
+# Ignore git history
+.git
+.gitignore
+
+# Ignore Docker files themselves (not needed inside the container)
+Dockerfile
+docker-compose.yml
+docker-compose.override.yml
+.dockerignore
+
+# Ignore environment files (You usually pass these in at runtime, not build time)
+.env
+
+# Ignore IDE files
+.vscode
+.idea
+.DS_Store
+
+# Ignore build artifacts
+dist
+build
+coverage
+
+# Ignore scripts that are only for local setup
+scripts/setup.sh

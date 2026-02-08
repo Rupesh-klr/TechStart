@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Environment variables (SECURITY RISK if pushed)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Docker (Ignore local volumes or overrides if you use them)
+docker-compose.override.yml
+
+# IDE / Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build output (if you use TypeScript or a build step)
+dist/
+build/
+coverage/
+
+helper.txt
