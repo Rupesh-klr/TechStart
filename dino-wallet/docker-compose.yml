@@ -5,33 +5,36 @@ services:
     build: .
     ports:
       - "3000:3000"
-    environment:
-      - DB_HOST=mysql_db
-      - DB_USER=user
-      - DB_PASSWORD=password
-      - DB_NAME=dino_wallet
-    depends_on:
-      - mysql_db
+    # OPTION A: Load everything from .env file (Recommended)
+    env_file:
+      - .env
+    # environment:
+    #   - DB_HOST=mysql_db
+    #   - DB_USER=user
+    #   - DB_PASSWORD=password
+    #   - DB_NAME=dino_wallet
     networks:
       - dino-net
 
-  mysql_db:
-    image: mysql:8.0
-    container_name: dino-wallet-db
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: dino_wallet
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
-    ports:
-      - "3306:3306"
-    volumes:
-      - db_data:/var/lib/mysql
-      # Automatically runs seed.sql on first startup!
-      - ./scripts/seed.sql:/docker-entrypoint-initdb.d/seed.sql
-    networks:
-      - dino-net
+    # depends_on:
+    #   - mysql_db
+  # mysql_db:
+  #   image: mysql:8.0
+  #   container_name: dino-wallet-db
+  #   restart: always
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: rootpassword
+  #     MYSQL_DATABASE: dino_wallet
+  #     MYSQL_USER: user
+  #     MYSQL_PASSWORD: password
+  #   ports:
+  #     - "3306:3306"
+  #   volumes:
+  #     - db_data:/var/lib/mysql
+  #     # Automatically runs seed.sql on first startup!
+  #     - ./scripts/seed.sql:/docker-entrypoint-initdb.d/seed.sql
+  #   networks:
+  #     - dino-net
 
 networks:
   dino-net:
