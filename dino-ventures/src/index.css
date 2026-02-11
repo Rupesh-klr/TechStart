@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+/* Keep your custom styles below */
+:root {
+  background-color: #0f0f0f;
+  color: #ffffff;
+  -webkit-tap-highlight-color: transparent;
+}
+/* ... rest of your CSS ... */
+
+@layer utilities {
+  /* ... existing no-scrollbar code ... */
+
+  /* YouTube-style Shimmer Animation */
+  .skeleton-shimmer {
+    background: #1a1a1a;
+    background-image: linear-gradient(
+      to right,
+      #1a1a1a 0%,
+      #2a2a2a 20%,
+      #1a1a1a 40%,
+      #1a1a1a 100%
+    );
+    background-repeat: no-repeat;
+    background-size: 800px 100%;
+    animation: shimmer 1.5s infinite linear forwards;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -400px 0;
+    }
+    100% {
+      background-position: 400px 0;
+    }
+  }
+}
