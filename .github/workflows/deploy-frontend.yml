@@ -4,8 +4,8 @@ on:
   push:
     branches: ["main"]
     paths:
-      - "dino-ventures/**"  # Only trigger if changes happen in frontend folder
-# FIX: 'env' must be here (no indentation), NOT inside 'on'
+      - "dino-ventures/**"
+
 env:
   isLiveInGitHUB: "true"
 
@@ -14,11 +14,9 @@ permissions:
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment
 concurrency:
   group: "pages"
   cancel-in-progress: false
-
 
 jobs:
   build-and-deploy:
@@ -35,8 +33,9 @@ jobs:
           cache-dependency-path: './dino-ventures/package.json'
 
       - name: Install Dependencies
-        working-directory: ./dino-ventures  # 👈 Crucial: Point to subfolder
-        run: npm ci
+        working-directory: ./dino-ventures
+        # 👇 FIX: Force install even with React 19 peer dependency warnings
+        run: npm ci --legacy-peer-deps
 
       - name: Build
         working-directory: ./dino-ventures
